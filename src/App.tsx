@@ -1,10 +1,7 @@
+import Home from "./pages/Home";
 
 function App() {
-  return (
-    <div className="min-h-screen">
-      {/* Your components will go here */}
-    </div>
-  )
+  return <Home />;
 }
 
-export default App
+export default App;
