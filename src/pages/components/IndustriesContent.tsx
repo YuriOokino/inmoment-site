@@ -17,15 +17,15 @@ type Props = {
   image: ImageProps;
 };
 
-export type UseCasesProps = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
+export type IndustriesContentProps = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
 
-export const UseCases = (props: UseCasesProps) => {
+export const IndustriesContent = (props: IndustriesContentProps) => {
   const { featureSections, image } = {
-    ...UseCasesDefaults,
+    ...IndustriesContentDefaults,
     ...props,
   };
   return (
-    <section id="use-case-content" className="pb-16 md:pb-24 lg:pb-28 pt-0">
+    <section id="industry-tab-content" className="pb-16 md:pb-24 lg:pb-36 pt-0">
       <div className="container">
         <div className="grid grid-cols-1 items-center gap-y-12 md:grid-cols-2 md:gap-x-12 lg:gap-x-20">
           <div className="grid grid-cols-1 gap-x-6 gap-y-8 py-2 max-w-xs">
@@ -53,7 +53,7 @@ export const UseCases = (props: UseCasesProps) => {
   );
 };
 
-export const UseCasesDefaults: Props = {
+export const IndustriesContentDefaults: Props = {
   featureSections: [
     {
       heading: "Short heading here",

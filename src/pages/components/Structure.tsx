@@ -1,6 +1,6 @@
 import { Button } from "@relume_io/relume-ui";
 import type { ButtonProps } from "@relume_io/relume-ui";
-import { RxChevronRight } from "react-icons/rx";
+import { RxChevronRight, RxDot } from "react-icons/rx";
 
 type ImageProps = {
   src: string;
@@ -22,28 +22,29 @@ type Props = {
   sections: SectionProps[];
 };
 
-export type ModularStructureProps = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
+export type StructureProps = React.ComponentPropsWithoutRef<"section"> & Partial<Props>;
 
 export const Tag: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-    <span className="mb-3 bg-background-secondary px-2 py-1 text-sm font-semibold md:mb-4">
+    <span className="mb-3 inline-flex items-center gap-2 rounded-[4px] bg-background-secondary px-4 py-2 text-sm font-semibold md:mb-4">
+      <RxDot className="text-lg" />
       {children}
     </span>
   );
 
-export const ModularStructure = (props: ModularStructureProps) => {
+export const Structure = (props: StructureProps) => {
   const { tagline, heading, description, sections } = {
-    ...ModularStructureDefaults,
+    ...StructureDefaults,
     ...props,
   };
 
   
   return (
-    <section id="section-modular-structure" className="px-40 py-16 md:py-24 lg:py-28">
-      <div className="container">
+    <section id="section-structure" className="theme-1 py-16 md:py-24 lg:py-36">
+      <div className="container mx-auto w-full max-w-[1200px] px-4">
         <div className="rb-12 mb-12 md:mb-18 lg:mb-20">
           <div className="max-w-lg">
             <p className="mb-3 font-semibold md:mb-4">{tagline}</p>
-            <h2 className="rb-5 mb-5 text-5xl font-bold md:mb-6 md:text-7xl lg:text-8xl">
+            <h2 className="mb-3 text-5xl font-bold md:mb-4 md:text-7xl lg:text-8xl">
               {heading}
             </h2>
             <p className="md:text-md">{description}</p>
@@ -54,7 +55,7 @@ export const ModularStructure = (props: ModularStructureProps) => {
                         md:grid-cols-2 md:gap-8
                         md:[&>*:nth-child(2n-1)]:transform md:[&>*:nth-child(2n-1)]:translate-y-20">
           {sections.map((section, index) => (
-            <div key={index} className="border border-border-primary">
+            <div key={index} className="overflow-hidden rounded-[12px] border" style={{ borderColor: 'var(--border-primary)' }}>
               <div className="flex items-center justify-center">
                 <img
                   src={section.image.src}
@@ -63,9 +64,7 @@ export const ModularStructure = (props: ModularStructureProps) => {
                 />
               </div>
               <div className="p-6 md:p-8 lg:p-12">
-                <span className="mb-3 bg-background-secondary px-2 py-1 text-sm font-semibold md:mb-4">
-                  {section.tagline}
-                </span>
+                <Tag>{section.tagline}</Tag>
                 <h3 className="mt-3 mb-3 text-4xl font-bold leading-[1.2] md:mt-4 md:mb-4 md:text-5xl lg:text-6xl">
                   {section.heading}
                 </h3>
@@ -87,22 +86,22 @@ export const ModularStructure = (props: ModularStructureProps) => {
   );
 };
 
-export const ModularStructureDefaults: Props = {
-  tagline: "Tagline",
-  heading: "Short heading goes here",
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+export const StructureDefaults: Props = {
+  tagline: "Try out how we can help your case",
+  heading: "A modular platform built for scale, speed, and clarity",
+  description: "The InMoment system connects the dots between signal, analysis, and action, with architecture designed for performance and flexibility at every step.",
   sections: [
     {
-      tagline: "Tagline",
-      heading: "Medium length section heading goes here",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+      tagline: "Input System",
+      heading: "Unified Feedback Layer",
+      description: "Capture customer input across surveys, voice, messaging, and chat, all routed through a single pipeline.",
       buttons: [
         {
-          title: "Button",
+          title: "Explore feedback channels",
           variant: "link",
           size: "link",
           iconRight: <RxChevronRight />,
+          className: "font-semibold",
         },
       ],
       image: {
@@ -111,16 +110,16 @@ export const ModularStructureDefaults: Props = {
       },
     },
     {
-      tagline: "Tagline",
-      heading: "Medium length section heading goes here",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+      tagline: "Core Intelligence",
+      heading: "AI(PI) Engine",
+      description: "Turn raw text into structured insight with LLM-based classification, urgency scoring, and prediction.",
       buttons: [
         {
-          title: "Button",
+          title: "See AI in action",
           variant: "link",
           size: "link",
           iconRight: <RxChevronRight />,
+          className: "font-semibold",
         },
       ],
       image: {
@@ -129,39 +128,39 @@ export const ModularStructureDefaults: Props = {
       },
     },
     {
-      tagline: "Tagline",
-      heading: "Medium length section heading goes here",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+      tagline: "Output Layer",
+      heading: "Insight delivery system",
+      description: "Route real-time insights to dashboards, alerts, or your existing tools like Salesforce, Zendesk, or Slack.",
       buttons: [
         {
-          title: "Button",
+          title: "View integrations",
           variant: "link",
           size: "link",
           iconRight: <RxChevronRight />,
+          className: "font-semibold",
         },
       ],
       image: {
         src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-        alt: "Relume placeholder image-landscape.svg",
+        alt: "Relume placeholder image 3",
       },
     },
     {
-      tagline: "Tagline",
-      heading: "Medium length section heading goes here",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.",
+      tagline: "Dev Tools",
+      heading: "Open integration framework",
+      description: "Easily embed InMoment into your workflows with flexible APIs and enterprise-grade connectors.",
       buttons: [
         {
-          title: "Button",
+          title: "Check out our APIs",
           variant: "link",
           size: "link",
           iconRight: <RxChevronRight />,
+          className: "font-semibold",
         },
       ],
       image: {
         src: "https://d22po4pjz3o32e.cloudfront.net/placeholder-image-landscape.svg",
-        alt: "Relume placeholder image-landscape.svg",
+        alt: "Relume placeholder image 4",
       },
     },
   ],

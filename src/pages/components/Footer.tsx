@@ -5,22 +5,29 @@ import React from "react";
 
 export function Footer() {
   return (
-    <footer id="footer" className="px-40 py-12 md:py-18 lg:py-20">
-      <div className="container">
+    <footer
+      id="section-footer"
+      className="theme-3 py-16 md:py-24 lg:py-36"
+    >
+      <div className="container mx-auto w-full max-w-[1200px] px-4">
         <div className="lg:flex lg:items-start lg:justify-between">
           <div className="rb-6 max-w-lg">
             <h1 className="mb-5 text-6xl font-bold md:mb-6 md:text-9xl lg:text-10xl">
-              Medium length footer heading goes here
+              Ready to tranform your CX?
             </h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse varius enim in eros elementum tristique.
+            Get started with InMoment today and unlock actionable insights across your entire customer experience. Our team is ready to help you drive meaningful improvements.
             </p>
           </div>
           <div className="mt-6 flex flex-wrap gap-4 md:mt-8 lg:mt-0">
-            <Button title="Button">Button</Button>
+            <Button 
+              title="Button"
+              style={{ backgroundColor: 'var(--color-primary-base)' }}
+            >
+              Request a Demo
+            </Button>
             <Button title="Button" variant="secondary">
-              Button
+              Sign Up
             </Button>
           </div>
         </div>
@@ -212,12 +219,12 @@ export function Footer() {
         <div className="rb-6 col-span-1 flex flex-col items-start justify-between pb-6 sm:flex-row sm:items-center md:pb-8 lg:col-span-2">
           <a href="#">
             <img
-              src="https://d22po4pjz3o32e.cloudfront.net/logo-image.svg"
+              src="./assets/Logo-wide.svg"
               alt="Logo image"
               className="mb-6 inline-block sm:mb-0"
             />
           </a>
-          <p className="text-sm">© 2024 Relume. All rights reserved.</p>
+          <p className="text-sm">© 2025 InMoment. All rights reserved.</p>
         </div>
         <div className="h-px w-full bg-black" />
       </div>

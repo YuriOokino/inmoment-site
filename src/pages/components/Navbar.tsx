@@ -42,229 +42,234 @@ export function Navbar() {
   return (
     <section
       id="navbar"
-      className="z-[999] flex w-full items-center border-b border-border-primary bg-background-primary md:min-h-18 lg:px-40 px-40"
+      className="theme-1 z-[999] flex w-full items-center bg-background-primary md:min-h-18"
     >
-      <div className="mx-auto size-full items-center justify-between lg:flex">
-        <div className="grid min-h-16 grid-cols-2 items-center justify-between px-[5%] md:min-h-18 lg:min-h-full lg:px-0">
-          <a href="#">
-            <img
-              src="https://d22po4pjz3o32e.cloudfront.net/logo-image.svg"
-              alt="Company logo"
-            />
-          </a>
-          <button
-            className="-mr-2 flex size-12 flex-col items-center justify-center justify-self-end lg:hidden"
-            onClick={useActive.toggleMobileMenu}
+      <div className="container mx-auto w-full max-w-[1200px] px-4">
+        <div className="flex size-full items-center justify-between">
+          <div className="grid min-h-16 grid-cols-2 items-center justify-between md:min-h-18 lg:min-h-full">
+            <a href="#" className="flex items-center">
+              <img
+                src="./assets/Logo-wide.svg"
+                alt="Company logo"
+              />
+            </a>
+            <button
+              className="-mr-2 flex size-12 flex-col items-center justify-center justify-self-end lg:hidden"
+              onClick={useActive.toggleMobileMenu}
+            >
+              <motion.span
+                className="my-[3px] h-0.5 w-6 bg-black"
+                animate={useActive.animateMobileMenuButtonSpan}
+                variants={{
+                  open: { translateY: 8, transition: { delay: 0.1 } },
+                  rotatePhase: { rotate: -45, transition: { delay: 0.2 } },
+                  closed: {
+                    translateY: 0,
+                    rotate: 0,
+                    transition: { duration: 0.2 },
+                  },
+                }}
+              />
+              <motion.span
+                className="my-[3px] h-0.5 w-6 bg-black"
+                animate={useActive.animateMobileMenu}
+                variants={{
+                  open: { width: 0, transition: { duration: 0.1 } },
+                  closed: {
+                    width: "1.5rem",
+                    transition: { delay: 0.3, duration: 0.2 },
+                  },
+                }}
+              />
+              <motion.span
+                className="my-[3px] h-0.5 w-6 bg-black"
+                animate={useActive.animateMobileMenuButtonSpan}
+                variants={{
+                  open: { translateY: -8, transition: { delay: 0.1 } },
+                  rotatePhase: { rotate: 45, transition: { delay: 0.2 } },
+                  closed: {
+                    translateY: 0,
+                    rotate: 0,
+                    transition: { duration: 0.2 },
+                  },
+                }}
+              />
+            </button>
+          </div>
+          <motion.div
+            variants={{
+              open: { height: "var(--height-open, 100dvh)" },
+              close: { height: "var(--height-closed, 0)" },
+            }}
+            initial="close"
+            exit="close"
+            animate={useActive.animateMobileMenu}
+            transition={{ duration: 0.3 }}
+            className="overflow-hidden px-40 lg:flex lg:items-center lg:px-0 lg:[--height-closed:auto] lg:[--height-open:auto]"
           >
-            <motion.span
-              className="my-[3px] h-0.5 w-6 bg-black"
-              animate={useActive.animateMobileMenuButtonSpan}
-              variants={{
-                open: { translateY: 8, transition: { delay: 0.1 } },
-                rotatePhase: { rotate: -45, transition: { delay: 0.2 } },
-                closed: {
-                  translateY: 0,
-                  rotate: 0,
-                  transition: { duration: 0.2 },
-                },
-              }}
-            />
-            <motion.span
-              className="my-[3px] h-0.5 w-6 bg-black"
-              animate={useActive.animateMobileMenu}
-              variants={{
-                open: { width: 0, transition: { duration: 0.1 } },
-                closed: {
-                  width: "1.5rem",
-                  transition: { delay: 0.3, duration: 0.2 },
-                },
-              }}
-            />
-            <motion.span
-              className="my-[3px] h-0.5 w-6 bg-black"
-              animate={useActive.animateMobileMenuButtonSpan}
-              variants={{
-                open: { translateY: -8, transition: { delay: 0.1 } },
-                rotatePhase: { rotate: 45, transition: { delay: 0.2 } },
-                closed: {
-                  translateY: 0,
-                  rotate: 0,
-                  transition: { duration: 0.2 },
-                },
-              }}
-            />
-          </button>
-        </div>
-        <motion.div
-          variants={{
-            open: { height: "var(--height-open, 100dvh)" },
-            close: { height: "var(--height-closed, 0)" },
-          }}
-          initial="close"
-          exit="close"
-          animate={useActive.animateMobileMenu}
-          transition={{ duration: 0.3 }}
-          className="overflow-hidden px-40 lg:flex lg:items-center lg:px-0 lg:[--height-closed:auto] lg:[--height-open:auto]"
-        >
-          <nav className="lg:flex lg:items-center">
-            <a
-              href="#"
-              className="block py-3 text-left text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base lg:first:pt-2"
-            >
-              Solution
-            </a>
-            <a
-              href="#"
-              className="block py-3 text-left text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base lg:first:pt-2"
-            >
-              Product
-            </a>
-            <a
-              href="#"
-              className="block py-3 text-left text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base lg:first:pt-2"
-            >
-              Customers
-            </a>
-            <div
-              onMouseEnter={useActive.openOnDesktopDropdownMenu}
-              onMouseLeave={useActive.closeOnDesktopDropdownMenu}
-            >
-              <button
-                className="flex w-full items-center justify-between gap-2 py-3 text-left text-md lg:flex-none lg:justify-start lg:px-4 lg:py-2 lg:text-base"
-                onClick={useActive.openOnMobileDropdownMenu}
+            <nav className="lg:flex lg:items-center">
+              <a
+                href="#"
+                className="block py-3 text-left text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base lg:first:pt-2"
               >
-                <span>Platform</span>
+                Solution
+              </a>
+              <a
+                href="#"
+                className="block py-3 text-left text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base lg:first:pt-2"
+              >
+                Product
+              </a>
+              <a
+                href="#"
+                className="block py-3 text-left text-md first:pt-7 lg:px-4 lg:py-2 lg:text-base lg:first:pt-2"
+              >
+                Customers
+              </a>
+              <div
+                onMouseEnter={useActive.openOnDesktopDropdownMenu}
+                onMouseLeave={useActive.closeOnDesktopDropdownMenu}
+              >
+                <button
+                  className="flex w-full items-center justify-between gap-2 py-3 text-left text-md lg:flex-none lg:justify-start lg:px-4 lg:py-2 lg:text-base"
+                  onClick={useActive.openOnMobileDropdownMenu}
+                >
+                  <span>Platform</span>
+                  <AnimatePresence>
+                    <motion.div
+                      animate={useActive.animateDropdownMenuIcon}
+                      variants={{
+                        rotated: { rotate: 180 },
+                        initial: { rotate: 0 },
+                      }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <RxChevronDown />
+                    </motion.div>
+                  </AnimatePresence>
+                </button>
                 <AnimatePresence>
-                  <motion.div
-                    animate={useActive.animateDropdownMenuIcon}
+                  <motion.nav
+                    animate={useActive.animateDropdownMenu}
+                    initial="close"
+                    exit="close"
                     variants={{
-                      rotated: { rotate: 180 },
-                      initial: { rotate: 0 },
+                      open: {
+                        visibility: "visible",
+                        opacity: "var(--opacity-open, 100%)",
+                        y: 0,
+                        display: "block",
+                      },
+                      close: {
+                        visibility: "hidden",
+                        opacity: "var(--opacity-close, 0)",
+                        y: "var(--y-close, 0%)",
+                        display: "none",
+                      },
                     }}
                     transition={{ duration: 0.3 }}
+                    className="z-50 bg-background-primary lg:absolute lg:w-80 lg:border lg:border-border-primary lg:p-6 lg:[--y-close:25%]"
                   >
-                    <RxChevronDown />
-                  </motion.div>
+                    <div className="grid grid-cols-1 grid-rows-[max-content] gap-y-2 py-3 md:py-3 lg:gap-y-4 lg:py-0">
+                      <a
+                        href="#"
+                        className="grid auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 lg:py-1"
+                      >
+                        <div>
+                          <img
+                            className="size-6"
+                            src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
+                            alt="Icon 1"
+                          />
+                        </div>
+                        <div className="flex flex-col items-start justify-center">
+                          <p className="text-md font-semibold lg:text-base">
+                            Page one
+                          </p>
+                          <p className="hidden text-sm md:block">
+                            Lorem ipsum dolor sit amet consectetur elit
+                          </p>
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        className="grid auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 lg:py-1"
+                      >
+                        <div>
+                          <img
+                            className="size-6"
+                            src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
+                            alt="Icon 2"
+                          />
+                        </div>
+                        <div className="flex flex-col items-start justify-center">
+                          <p className="text-md font-semibold lg:text-base">
+                            Page two
+                          </p>
+                          <p className="hidden text-sm md:block">
+                            Lorem ipsum dolor sit amet consectetur elit
+                          </p>
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        className="grid auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 lg:py-1"
+                      >
+                        <div>
+                          <img
+                            className="size-6"
+                            src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
+                            alt="Icon 3"
+                          />
+                        </div>
+                        <div className="flex flex-col items-start justify-center">
+                          <p className="text-md font-semibold lg:text-base">
+                            Page three
+                          </p>
+                          <p className="hidden text-sm md:block">
+                            Lorem ipsum dolor sit amet consectetur elit
+                          </p>
+                        </div>
+                      </a>
+                      <a
+                        href="#"
+                        className="grid auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 lg:py-1"
+                      >
+                        <div>
+                          <img
+                            className="size-6"
+                            src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
+                            alt="Icon 4"
+                          />
+                        </div>
+                        <div className="flex flex-col items-start justify-center">
+                          <p className="text-md font-semibold lg:text-base">
+                            Page four
+                          </p>
+                          <p className="hidden text-sm md:block">
+                            Lorem ipsum dolor sit amet consectetur elit
+                          </p>
+                        </div>
+                      </a>
+                    </div>
+                  </motion.nav>
                 </AnimatePresence>
-              </button>
-              <AnimatePresence>
-                <motion.nav
-                  animate={useActive.animateDropdownMenu}
-                  initial="close"
-                  exit="close"
-                  variants={{
-                    open: {
-                      visibility: "visible",
-                      opacity: "var(--opacity-open, 100%)",
-                      y: 0,
-                      display: "block",
-                    },
-                    close: {
-                      visibility: "hidden",
-                      opacity: "var(--opacity-close, 0)",
-                      y: "var(--y-close, 0%)",
-                      display: "none",
-                    },
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className="z-50 bg-background-primary lg:absolute lg:w-80 lg:border lg:border-border-primary lg:p-6 lg:[--y-close:25%]"
-                >
-                  <div className="grid grid-cols-1 grid-rows-[max-content] gap-y-2 py-3 md:py-3 lg:gap-y-4 lg:py-0">
-                    <a
-                      href="#"
-                      className="grid auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 lg:py-1"
-                    >
-                      <div>
-                        <img
-                          className="size-6"
-                          src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                          alt="Icon 1"
-                        />
-                      </div>
-                      <div className="flex flex-col items-start justify-center">
-                        <p className="text-md font-semibold lg:text-base">
-                          Page one
-                        </p>
-                        <p className="hidden text-sm md:block">
-                          Lorem ipsum dolor sit amet consectetur elit
-                        </p>
-                      </div>
-                    </a>
-                    <a
-                      href="#"
-                      className="grid auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 lg:py-1"
-                    >
-                      <div>
-                        <img
-                          className="size-6"
-                          src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                          alt="Icon 2"
-                        />
-                      </div>
-                      <div className="flex flex-col items-start justify-center">
-                        <p className="text-md font-semibold lg:text-base">
-                          Page two
-                        </p>
-                        <p className="hidden text-sm md:block">
-                          Lorem ipsum dolor sit amet consectetur elit
-                        </p>
-                      </div>
-                    </a>
-                    <a
-                      href="#"
-                      className="grid auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 lg:py-1"
-                    >
-                      <div>
-                        <img
-                          className="size-6"
-                          src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                          alt="Icon 3"
-                        />
-                      </div>
-                      <div className="flex flex-col items-start justify-center">
-                        <p className="text-md font-semibold lg:text-base">
-                          Page three
-                        </p>
-                        <p className="hidden text-sm md:block">
-                          Lorem ipsum dolor sit amet consectetur elit
-                        </p>
-                      </div>
-                    </a>
-                    <a
-                      href="#"
-                      className="grid auto-cols-fr grid-cols-[max-content_1fr] items-start gap-x-3 py-2 lg:py-1"
-                    >
-                      <div>
-                        <img
-                          className="size-6"
-                          src="https://d22po4pjz3o32e.cloudfront.net/relume-icon.svg"
-                          alt="Icon 4"
-                        />
-                      </div>
-                      <div className="flex flex-col items-start justify-center">
-                        <p className="text-md font-semibold lg:text-base">
-                          Page four
-                        </p>
-                        <p className="hidden text-sm md:block">
-                          Lorem ipsum dolor sit amet consectetur elit
-                        </p>
-                      </div>
-                    </a>
-                  </div>
-                </motion.nav>
-              </AnimatePresence>
+              </div>
+            </nav>
+            <div className="mt-6 flex flex-col gap-4 lg:mt-0 lg:ml-4 lg:flex-row lg:items-center">
+              <Button 
+                title="Button" 
+                size="sm"
+                style={{ backgroundColor: 'var(--color-primary-base)' }}
+              >
+                Button
+              </Button>
+              <Button title="Button" variant="secondary" size="sm">
+                Button
+              </Button>
             </div>
-          </nav>
-          <div className="mt-6 flex flex-col gap-4 lg:mt-0 lg:ml-4 lg:flex-row lg:items-center">
-
-            <Button title="Button" size="sm">
-              Request a Demo
-            </Button>
-            <Button title="Button" variant="secondary" size="sm">
-              Login
-            </Button>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

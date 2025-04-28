@@ -37,7 +37,7 @@ const useSectionObserver = () => {
   return { active, sectionRefs };
 };
 
-export function MainScroll() {
+export function FeatureScroll() {
   const { active, sectionRefs } = useSectionObserver();
 
   const groups = [
@@ -68,8 +68,8 @@ export function MainScroll() {
   ];
 
   return (
-    <section id="section-main-scroll" className="px-40 py-16">
-      <div className="container">
+    <section id="section-feature-scroll" className="theme-1 py-16">
+      <div className="container mx-auto w-full max-w-[1200px] px-4">
         <div className="relative grid gap-x-12 py-16 sm:gap-y-12 md:grid-cols-2 md:py-0 lg:gap-x-20">
           {/* Left side: scrolling text sections */}
           <div className="grid grid-cols-1 gap-12 md:block">
@@ -90,7 +90,11 @@ export function MainScroll() {
                   {group.description}
                 </p>
                 <div className="mt-6 flex flex-wrap items-center gap-4 md:mt-8">
-                  <Button title={group.button} iconRight={<RxChevronRight />}>
+                  <Button
+                    title={group.button}
+                    iconRight={<RxChevronRight />}
+                    style={{ backgroundColor: 'var(--color-primary-base)' }}
+                  >
                     {group.button}
                   </Button>
                 </div>

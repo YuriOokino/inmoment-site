@@ -8,7 +8,7 @@ import {
 } from "@relume_io/relume-ui";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { UseCases } from "./UseCases";
+import { IndustriesContent } from "./IndustriesContent";
 
 type Trigger = {
   value: string;
@@ -43,9 +43,9 @@ const useTabsTrigger = ({
       key={trigger.value}
       value={trigger.value}
       onClick={() => setActiveTab(trigger.value)}
-      className="relative w-full max-w-xs px-4 py-5 text-center text-black bg-transparent border-none data-[state=active]:bg-transparent data-[state=active]:text-black"
+      className="relative w-full max-w-xs px-4 py-5 text-center text-black bg-transparent border-none data-[state=active]:bg-transparent data-[state=active]:text-black data-[state=active]:opacity-100 text-base opacity-40 hover:opacity-100 transition-opacity duration-300"
       >
-      <span>{trigger.text}</span>
+      <h5 className="text-base">{trigger.text}</h5>
       <div className="absolute inset-x-0 top-0 h-[0.15rem] bg-black/20 z-10">
         <motion.div
           className="h-full bg-black"
@@ -69,7 +69,7 @@ const useTabsTrigger = ({
   };
 };
 
-export function TabContainer() {
+export function IndustriesContainer() {
   const triggers = [
     { value: "tab-one", text: "Retail" },
     { value: "tab-two", text: "Financial" },
@@ -144,27 +144,32 @@ export function TabContainer() {
   };
 
   return (
-    <section id="tabs-container" className="relative mb-10 px-40 bg-white">
-      <Tabs value={tabsTriggerState.activeTab} className="flex flex-col gap-12">
-        <div className="w-full">
-          {triggers.map((trigger) => (
-            <TabsContent key={trigger.value} value={trigger.value} className="w-full">
-              <motion.div
-                initial={{ y: "20%", opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: "-20%", opacity: 0 }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-              >
-                <UseCases featureSections={featureSectionsByTab[trigger.value as keyof typeof featureSectionsByTab]} />
-              </motion.div>
-            </TabsContent>
-          ))}
-        </div>
+    <section
+      id="industries-container"
+      className="theme-3 py-16 md:py-24 lg:py-28"
+    >
+      <div className="container mx-auto w-full max-w-[1200px] px-4">
+        <Tabs value={tabsTriggerState.activeTab} className="flex flex-col gap-12">
+          <div className="w-full">
+            {triggers.map((trigger) => (
+              <TabsContent key={trigger.value} value={trigger.value} className="w-full">
+                <motion.div
+                  initial={{ y: "20%", opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: "-20%", opacity: 0 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                >
+                  <IndustriesContent featureSections={featureSectionsByTab[trigger.value as keyof typeof featureSectionsByTab]} />
+                </motion.div>
+              </TabsContent>
+            ))}
+          </div>
 
-        <TabsList className="flex w-full justify-between gap-4">
-          {triggers.map(tabsTriggerState.renderTrigger)}
-        </TabsList>
-      </Tabs>
+          <TabsList className="flex w-full justify-between gap-4">
+            {triggers.map(tabsTriggerState.renderTrigger)}
+          </TabsList>
+        </Tabs>
+      </div>
     </section>
   );
 }
