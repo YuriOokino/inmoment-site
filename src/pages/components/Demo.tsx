@@ -28,28 +28,14 @@ export function Demo() {
               </div>
             </div>
           </div>
-          {/* Layout: side images top left/right, center image large and below */}
-          <div className="relative flex flex-col items-center mt-24" style={{minHeight: '600px'}}>
-            {/* Side images */}
-            <img
-              className="hidden sm:block absolute -left-48 -top-24 w-[30vw] max-w-md rounded-image object-cover"
-              src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-              alt="Relume placeholder image 1"
-            />
-            <img
-              className="hidden sm:block absolute -right-24 top-16 w-1/4 max-w-xs rounded-image object-cover"
-              style={{transform: 'translateY(-50%)'}}
-              src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
-              alt="Relume placeholder image 3"
-            />
-            {/* Center image */}
+         
             <img
               className="w-[80vw] max-w-full rounded-image object-cover"
               style={{marginTop: '6rem'}}
               src="https://d22po4pjz3o32e.cloudfront.net/placeholder-image.svg"
               alt="Relume placeholder image 2"
             />
-          </div>
+        
         </div>
       </div>
     </section>

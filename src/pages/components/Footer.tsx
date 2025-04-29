@@ -7,7 +7,8 @@ export function Footer() {
   return (
     <footer
       id="section-footer"
-      className="theme-3 py-16 md:py-24 lg:py-36"
+      data-theme="theme-3"
+      className="py-16 md:py-24 lg:py-36 bg-[var(--bg-primary)]"
     >
       <div className="container mx-auto w-full max-w-[1200px] px-4">
         <div className="lg:flex lg:items-start lg:justify-between">

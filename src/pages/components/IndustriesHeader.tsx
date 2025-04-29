@@ -4,11 +4,12 @@ import { Button } from "@relume_io/relume-ui";
 import { RxChevronRight } from "react-icons/rx";
 import React from "react";
 
-export function IndustriesHeader({ theme = "theme-3", id = "industries-header" }) {
+export function IndustriesHeader () {
   return (
     <section
-      id={id}
-      className={`${theme} py-16 md:py-24 lg:py-36`}
+      id="industries-header"
+      className="py-16 md:py-24 lg:py-36 bg-[var(--bg-primary)]"
+      data-theme="theme-3"
     >
       <div className="container mx-auto w-full max-w-[1200px] px-4">
         <div className="w-full max-w-md">

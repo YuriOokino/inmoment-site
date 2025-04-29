@@ -8,14 +8,15 @@ export function Audiences() {
   return (
     <section
       id="section-audiences"
-      className="theme-2 py-16 md:py-24 lg:py-36"
+      data-theme="theme-2"
+      className="py-16 md:py-24 lg:py-36 bg-[var(--bg-primary)] text-[var(--text-primary)]"
     >
       <div className="container mx-auto w-full max-w-[1200px] px-4">
         <div className="w-full max-w-lg pb-24">
           <div>
-            <h2 className="text-4xl mb-6 leading-[1.2] font-bold md:text-5xl lg:text-6xl">
+            <h1 className="text-4xl mb-6 leading-[1.2] font-bold md:text-5xl lg:text-6xl">
               CX isn't owned by one team. So we built a platform for all of them.
-            </h2>
+            </h1>
           </div>
           <div>
             <p className="md:text-md">

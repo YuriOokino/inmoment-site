@@ -4,7 +4,8 @@ import React from "react";
 
 export function Logos() {
   return (
-    <section id="section-logos" className="theme-2 py-12 md:py-16 lg:py-20 bg-background-primary">
+    <section id="section-logos" data-theme="theme-2" className="py-12 md:py-16 lg:py-20 bg-[var(--bg-primary)]
+  text-[var(--text-primary)]">
       <div className="container mx-auto w-full max-w-[1200px] px-4">
         <h1 className="mx-auto mb-6 w-full max-w-lg text-center text-base leading-[1.2] font-bold md:mb-8 md:text-md md:leading-[1.2] text-text-primary">
         Join the 3,000 brands that trust InMoment

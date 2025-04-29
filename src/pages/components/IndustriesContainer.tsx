@@ -146,7 +146,8 @@ export function IndustriesContainer() {
   return (
     <section
       id="industries-container"
-      className="theme-3 py-16 md:py-24 lg:py-28"
+      data-theme="theme-3"
+      className="py-16 md:py-24 lg:py-28 bg-[var(--bg-primary)]"
     >
       <div className="container mx-auto w-full max-w-[1200px] px-4">
         <Tabs value={tabsTriggerState.activeTab} className="flex flex-col gap-12">

@@ -11,10 +11,17 @@
     overflow-x: hidden;
   }
 
+  h1 {
+    @apply text-6xl mb-6 leading-[1.2] font-bold 
+           md:text-5xl lg:text-6xl;
+  }
+
+  /* 1. Primitives + Theme token definitions */
   :root {
     /* Color Primitives */
     --color-black: #000000;
     --color-white: #FFFFFF;
+    /* Neutral Scale */
     --color-neutral-lightest: #F7F6F8;
     --color-neutral-lighter: #EDEAEF;
     --color-neutral-light: #D9DCDE;
@@ -22,7 +29,6 @@
     --color-neutral-dark: #6A5D70;
     --color-neutral-darker: #3C373F;
     --color-neutral-darkest: #211F21;
-
     /* Primary Colors */
     --color-primary-lightest: #DFF0FF;
     --color-primary-lighter: #B8E3FF;
@@ -31,125 +37,96 @@
     --color-primary-dark: #007ACE;
     --color-primary-darker: #084572;
     --color-primary-darkest: #062B4B;
-
     /* Secondary Colors */
     --color-secondary-lightest: #EDF0FF;
     --color-secondary-lighter: #C5C9FF;
-    --color-secondary-light: #A115FF;
+    --color-secondary-light: #A1A5FF;
     --color-secondary-base: #827CFD;
     --color-secondary-dark: #613FEC;
     --color-secondary-darker: #442BA8;
     --color-secondary-darkest: #3A2A85;
-
     /* Accent Colors */
-    --color-accent: #FF7442;
-    --color-accent-light: #FFC51B;
-    --color-accent-primary: #1EADFF;
+    --color-accent-primary: #FF7442;
+    --color-accent-secondary: var(--color-primary-base);
+    --color-accent-alternative: var(--color-secondary-light);
 
-    /* Theme 1 */
-    --theme-1-background-primary: var(--color-white);
-    --theme-1-background-secondary: var(--color-neutral-lightest);
+    /* Theme-1 tokens */
+    --theme-1-bg-primary: var(--color-white);
+    --theme-1-bg-secondary: var(--color-neutral-lightest);
     --theme-1-text-primary: var(--color-black);
     --theme-1-text-secondary: var(--color-neutral-dark);
     --theme-1-border-primary: var(--color-neutral-light);
     --theme-1-border-secondary: var(--color-neutral-base);
-    --theme-1-accent-primary: var(--color-secondary-dark);
-    --theme-1-accent-secondary: var(--color-secondary-darker);
-    --theme-1-accent: var(--color-accent);
-    --theme-1-accent-light: var(--color-accent-light);
+    --theme-1-accent: var(--color-accent-primary);
 
-    /* Theme 2 */
-    --theme-2-background-primary: var(--color-neutral-darkest);
-    --theme-2-background-secondary: var(--color-neutral-darkest);
+    /* Theme-2 tokens */
+    --theme-2-bg-primary: var(--color-neutral-darkest);
+    --theme-2-bg-secondary: var(--color-neutral-darkest);
     --theme-2-text-primary: var(--color-white);
     --theme-2-text-secondary: var(--color-neutral-light);
     --theme-2-border-primary: var(--color-neutral-darker);
     --theme-2-border-secondary: var(--color-neutral-base);
-    --theme-2-accent-primary: var(--color-accent);
-    --theme-2-accent-secondary: var(--color-accent-light);
-    --theme-2-accent: var(--color-accent);
-    --theme-2-accent-light: var(--color-accent-light);
+    --theme-2-accent: var(--color-accent-alternative);
 
-    /* Theme 3 */
-    --theme-3-background-primary: var(--color-neutral-lightest);
-    --theme-3-background-secondary: var(--color-white);
+    /* Theme-3 tokens */
+    --theme-3-bg-primary: var(--color-neutral-lightest);
+    --theme-3-bg-secondary: var(--color-white);
     --theme-3-text-primary: var(--color-black);
     --theme-3-text-secondary: var(--color-neutral-darker);
     --theme-3-border-primary: var(--color-neutral-light);
     --theme-3-border-secondary: var(--color-neutral-base);
-    --theme-3-accent-primary: var(--color-primary-base);
-    --theme-3-accent-secondary: var(--color-primary-dark);
-    --theme-3-accent: var(--color-accent);
-    --theme-3-accent-light: var(--color-accent-light);
-
-    /* Default theme */
-    --accent: var(--theme-1-accent);
-    --accent-light: var(--theme-1-accent-light);
-    --accent-primary: var(--theme-1-accent-primary);
-    --accent-secondary: var(--theme-1-accent-secondary);
-    --background-primary: var(--theme-1-background-primary);
-    --background-secondary: var(--theme-1-background-secondary);
+    --theme-3-accent: var(--color-accent-secondary);
+    
+    /* 2. Semantic alias defaults (Theme 1 as fallback) */
+    --bg-primary:   var(--theme-1-bg-primary);
+    --bg-secondary: var(--theme-1-bg-secondary);
     --text-primary: var(--theme-1-text-primary);
     --text-secondary: var(--theme-1-text-secondary);
     --border-primary: var(--theme-1-border-primary);
+    --accent:       var(--theme-1-accent);
   }
 
-  /* Theme Classes */
-  .theme-1 {
-    background-color: var(--theme-1-background-primary);
-    color: var(--theme-1-text-primary);
-    --border-primary: var(--theme-1-border-primary);
-    --accent: var(--theme-1-accent);
-    --accent-light: var(--theme-1-accent-light);
-    --accent-primary: var(--theme-1-accent-primary);
-    --accent-secondary: var(--theme-1-accent-secondary);
-    --background-primary: var(--theme-1-background-primary);
-    --background-secondary: var(--theme-1-background-secondary);
+  /* 3. Theme overrides via data-theme attribute */
+  [data-theme="theme-1"] {
+    --bg-primary:   var(--theme-1-bg-primary);
+    --bg-secondary: var(--theme-1-bg-secondary);
     --text-primary: var(--theme-1-text-primary);
     --text-secondary: var(--theme-1-text-secondary);
+    --border-primary: var(--theme-1-border-primary);
+    --accent:       var(--theme-1-accent);
   }
 
-  .theme-2 {
-    background-color: var(--theme-2-background-primary);
-    color: var(--theme-2-text-primary);
-    --border-primary: var(--theme-2-border-primary);
-    --accent: var(--theme-2-accent);
-    --accent-light: var(--theme-2-accent-light);
-    --accent-primary: var(--theme-2-accent-primary);
-    --accent-secondary: var(--theme-2-accent-secondary);
-    --background-primary: var(--theme-2-background-primary);
-    --background-secondary: var(--theme-2-background-secondary);
+  [data-theme="theme-2"] {
+    --bg-primary:   var(--theme-2-bg-primary);
+    --bg-secondary: var(--theme-2-bg-secondary);
     --text-primary: var(--theme-2-text-primary);
     --text-secondary: var(--theme-2-text-secondary);
+    --border-primary: var(--theme-2-border-primary);
+    --accent:       var(--theme-2-accent);
   }
 
-  .theme-3 {
-    background-color: var(--theme-3-background-primary);
-    color: var(--theme-3-text-primary);
-    --border-primary: var(--theme-3-border-primary);
-    --accent: var(--theme-3-accent);
-    --accent-light: var(--theme-3-accent-light);
-    --accent-primary: var(--theme-3-accent-primary);
-    --accent-secondary: var(--theme-3-accent-secondary);
-    --background-primary: var(--theme-3-background-primary);
-    --background-secondary: var(--theme-3-background-secondary);
+  [data-theme="theme-3"] {
+    --bg-primary:   var(--theme-3-bg-primary);
+    --bg-secondary: var(--theme-3-bg-secondary);
     --text-primary: var(--theme-3-text-primary);
     --text-secondary: var(--theme-3-text-secondary);
+    --border-primary: var(--theme-3-border-primary);
+    --accent:       var(--theme-3-accent);
   }
 }
 
 @layer components {
-  /* Apply border radius to all buttons except link variant */
+  /* Global button radius */
   button:not([class*="variant-link"]) {
     @apply rounded-small;
   }
 
-  /* Apply medium border radius to all images */
+  /* Image radius */
   img {
     @apply rounded-medium;
   }
 
-  /* Hover animation for buttons with icons */
+  /* Icon hover animation */
   button.inline-flex svg {
     transition: transform 300ms ease;
   }
@@ -159,14 +136,5 @@
   }
 }
 
-.carousel-scroll::before {
-  content: "";
-  display: block;
-  flex-shrink: 0;
-  width: 1rem; /* matches px-4 */
-}
-@media (min-width: 768px) {
-  .carousel-scroll::before {
-    width: 2rem; /* matches md:px-8 */
-  }
-}
+/* Example usage: utility classes consuming aliases */
+/* <section data-theme="theme-2" class="bg-[var(--bg-primary)] text-[var(--text-primary)] border border-[var(--border-primary)] p-6">... */
